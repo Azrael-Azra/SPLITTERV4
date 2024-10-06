@@ -1,0 +1,302 @@
+﻿
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SPLITTER.MainPage"
+             BackgroundImageSource="bg.png">
+
+    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto, Auto, Auto, Auto" ColumnDefinitions="*,*" Padding="10">
+
+        <!-- Title -->
+        <Label Grid.Row="0" 
+               Grid.ColumnSpan="2" 
+               Text="SPLI" 
+               CharacterSpacing="2.9"
+               HorizontalOptions="Center" 
+               TextColor="White" 
+               FontAttributes="Bold" 
+               FontSize="Large"/>
+        
+        <Label Grid.Row="1" 
+                Grid.ColumnSpan="2" 
+                Text="TTER" 
+                CharacterSpacing="2"
+                HorizontalOptions="Center" 
+                TextColor="White" 
+                FontAttributes="Bold" 
+                FontSize="Large"/>
+
+        <Frame Grid.Row="3" 
+               Grid.ColumnSpan="2"
+               BackgroundColor="#178282" 
+               Opacity="0.5"
+               CornerRadius="20"
+               HeightRequest="109"
+               Padding="10"/>
+        <!-- Amount Entry -->
+        <Frame Grid.Row="3" 
+               Grid.ColumnSpan="2"
+               BackgroundColor="Transparent"
+               BorderColor="Transparent"
+               CornerRadius="20"
+               HeightRequest="109"
+               Padding="10">
+        
+        
+                    <!--Bill Amount Entry-->
+                    <Grid>
+
+                        <Label 
+                               Text="Php" 
+                               FontSize="50"
+                               FontFamily="OleoScriptSwashCapsRegular"
+                               TextColor="White"
+                               FontAttributes="Bold"
+                               VerticalOptions="Center"
+                               Padding="10"/>
+                        <Entry Grid.Row="3" 
+                               Grid.ColumnSpan="2"
+                               x:Name="BillEntry"
+                               Text="0.00" 
+                               FontSize="50"
+                               FontFamily="OleoScriptSwashCapsRegular"
+                               TextColor="White"
+                               FontAttributes="Bold"
+                               VerticalOptions="Center"
+                               HorizontalOptions="EndAndExpand" 
+                               Keyboard="Numeric"
+                               TextChanged="OnBillEntryTextChanged"/>   
+            </Grid>
+        </Frame>
+
+        <Label Grid.Row="4" 
+               Grid.ColumnSpan="2"
+               Text="Select Tip" 
+               FontSize="25"
+               FontFamily="OleoScriptRegular"
+               TextColor="White"
+               FontAttributes="Bold"
+               VerticalOptions="Center"
+               Padding="15,10,0,0"/>
+
+        <HorizontalStackLayout Grid.Row="5" Spacing="25" Padding="10">
+            <Button Text="5%" 
+            BackgroundColor="#0092AF" 
+            TextColor="White" 
+            FontSize="25" 
+            FontFamily="OleoScriptRegular"/>
+            <Button Text="25%" 
+            BackgroundColor="#0092AF" 
+            TextColor="White"
+            FontSize="25"
+            FontFamily="OleoScriptRegular"/>
+            <Button Text="50%"
+            BackgroundColor="#0092AF" 
+            TextColor="White" 
+            FontSize="25"
+            FontFamily="OleoScriptRegular"/>
+
+            <!-- Custom Button -->
+            <Button Text="&#9881;" 
+            BackgroundColor="#1F5055"
+            TextColor="White" 
+            FontSize="25" 
+            FontFamily="OleoScriptRegular" 
+            Clicked="OnCustomTipClicked"/>
+        </HorizontalStackLayout>
+
+        <!-- Slider for Tip Selection -->
+        <Frame
+            Grid.Row="6"
+            Grid.ColumnSpan="2"
+            HeightRequest="62"
+            WidthRequest="380"
+            CornerRadius="30"
+            Margin="0,30,0,0"
+            BorderColor="Transparent"
+            BackgroundColor="#07282D"
+            Opacity="0.64">
+        </Frame>
+
+        <!-- CUSTOM TIP -->
+        <!-- Custom Tip Entry -->
+        <VerticalStackLayout x:Name="CustomTipSection"
+                     IsVisible="False" 
+                     Grid.Row="6"
+                     Grid.ColumnSpan="2"
+                     Margin="10,0,0,0"
+                     VerticalOptions="EndAndExpand">
+
+            <Label Grid.Row="6"
+                   Grid.ColumnSpan="2"
+                   Text="Enter Tip Amount"
+                   TextColor="White"
+                   Margin="10,0,0,0"
+                   FontFamily="OleoScriptRegular"
+                   FontSize="15"/>
+            <Entry x:Name="CustomTipEntry"
+                   WidthRequest="350"
+                   VerticalTextAlignment="End"
+                   VerticalOptions="EndAndExpand"
+                   HorizontalTextAlignment="Center"
+                   Text="0.00"
+                   TextColor="White"
+                   FontSize="35"
+                   FontFamily="OleoScriptSwashCapsRegular"
+                   Keyboard="Numeric"/>
+        </VerticalStackLayout>
+
+        <!-- Custom Tip Slider -->
+        <VerticalStackLayout x:Name="TipSliderSection"
+                     IsVisible="True" 
+                     Grid.Row="6"
+                     Grid.ColumnSpan="2"
+                     Margin="0,0,0,10"
+                     VerticalOptions="EndAndExpand">
+            <Label
+                   x:Name="TipSliderLabel"
+                   Text="Tip Percentage: 0%" 
+                   TextColor="White"
+                   Margin="0,0,0,20"
+                   FontFamily="OleoScriptRegular"
+                   FontSize="15"/>
+            <Slider x:Name="TipSlider" 
+                    Maximum="50"
+                    Minimum="0"
+                    WidthRequest="340"
+                    MinimumTrackColor="#00FFF0"
+                    MaximumTrackColor="#0092AF"
+                    ThumbImageSource="neptune.png"
+                    Visual="Default"
+                    ValueChanged="OnTipSliderValueChanged"/>
+        </VerticalStackLayout>
+
+        <!--Number of People-->
+        <Frame
+            Grid.Row="7"
+            Grid.ColumnSpan="2"
+            HeightRequest="87"
+            WidthRequest="390"
+            CornerRadius="30"
+            Margin="0,10,0,0"
+            BorderColor="Transparent"
+            BackgroundColor="#07282D"
+            Opacity="0.79">
+        </Frame>
+        <!--Entry Background-->
+        <Frame  
+            Grid.Row="7"
+            Grid.ColumnSpan="2"
+            BackgroundColor="#0E626F"
+            BorderColor="Transparent"
+            HeightRequest="49"
+            WidthRequest="56"
+            Margin="280,0,0,0">
+
+        </Frame>
+        <HorizontalStackLayout
+            Grid.Row="7"
+            Grid.ColumnSpan="2"
+            Spacing="10">
+
+            <Image Source="numpeps.png"
+                   HeightRequest="68" 
+                   WidthRequest="65"
+                   Margin="0,11,0,0"/>
+            
+            <Label Text="Number Of people"
+                   FontFamily="OleoScriptRegular"
+                   TextColor="White"
+                   TextTransform="Uppercase"
+                   FontSize="25"
+                   VerticalTextAlignment="Center"/>
+
+            <Entry x:Name="PeopleEntry"
+                   Grid.Row="7" 
+                   Grid.ColumnSpan="2"
+                   Text="1" 
+                   FontSize="25"
+                   FontFamily="OleoScriptRegular"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   VerticalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   HorizontalOptions="EndAndExpand"
+                   Keyboard="Numeric"/>
+        </HorizontalStackLayout>
+
+        <Border Grid.Row="8"
+               Grid.ColumnSpan="2"
+               HeightRequest="236"
+               WidthRequest="389"
+               Stroke="#0092AF"
+               StrokeShape="RoundRectangle 51"
+               StrokeThickness="5"
+               Opacity="100"
+               Margin="0,10,0,0">
+            <Grid>
+                <Image Aspect="AspectFill" 
+                       Source="frame.png"
+                       Opacity=".5"/>
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*,*" Padding="0,20">
+                    <Label     Grid.Column="0"
+                               Text="Tip"
+                               TextColor="White"
+                               FontSize="15"
+                               FontFamily="OleoScriptRegular"
+                               TextTransform="Uppercase"
+                               HorizontalTextAlignment="Center"
+                               Margin="160,0,0,0"/>
+                    
+                    <Label     Grid.Column="1"
+                               Text="/person"
+                               TextColor="#00FFF0"
+                               FontSize="15"
+                               FontFamily="OleoScriptRegular"
+                               TextTransform="Lowercase"
+                               HorizontalOptions="Start"/>
+                    
+                    <Label     Grid.Row="1"
+                               Grid.ColumnSpan="2"
+                               x:Name="TipAmountLabel"
+                               Text="Php 0.00"
+                               TextColor="WhiteSmoke"
+                               FontSize="50"
+                               FontFamily="OleoScriptSwashCapsRegular"
+                               HorizontalOptions="Center"/>
+                    
+                    <Label     Grid.Row="2"
+                               Grid.Column="0"
+                               Text="Total"
+                               TextColor="White"
+                               FontSize="15"
+                               FontFamily="OleoScriptRegular"
+                               TextTransform="Uppercase"
+                               HorizontalTextAlignment="Center"
+                               Margin="140,0,0,0"/>
+
+                    <Label     Grid.Row="2"
+                               Grid.Column="1"
+                               Text="/person"
+                               TextColor="#00FFF0"
+                               FontSize="15"
+                               FontFamily="OleoScriptRegular"
+                               TextTransform="Lowercase"
+                               HorizontalOptions="Start"/>
+                    
+                    <Label     Grid.Row="3"
+                               Grid.ColumnSpan="2"
+                               x:Name="TotalAmountLabel"
+                               Text="Php 0.00"
+                               TextColor="WhiteSmoke"
+                               FontSize="50"
+                               FontFamily="OleoScriptSwashCapsRegular"
+                               HorizontalOptions="Center"/> 
+
+                </Grid>
+            </Grid>
+        </Border>
+            
+
+    </Grid>
+
+</ContentPage>
